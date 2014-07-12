@@ -1,0 +1,16 @@
+language: php
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+before_script:
+  - git clone --depth=1 git://github.com/zenovich/runkit.git
+  - cd runkit
+  - phpize
+  - ./configure
+  - make
+  - make install
+  - cd ../
+  - phpenv config-add travis.php.ini
+script:
+  - phpunit SampleTest.php
